@@ -16,10 +16,11 @@ router.post('/', async (req, res) => {
         const isUserName = await collection.findOne({ username: username });
 
         if (isEmailExist || isUserName) {
-            res.json("Exist");
+            res.status(409).json({message:"Account already Exist"});
         } else {
-            res.json("account created successfully");
             await collection.insertMany([data]);
+            res.status(201).json({message:"account created successfully"});
+            
         }
     } catch (e) {
         console.log(e);

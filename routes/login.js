@@ -10,12 +10,12 @@ router.post('/', async (req, res) => {
         const checkPassword = await collection.findOne({ password: password });
 
         if (checkUsername && checkPassword) {
-            res.json('Login successfully');
+            res.status(409).json({message:'Invalid credentials'});
         } else {
-            res.json('user does notexist');
+            res.status(201).json({message:'Login successfully'});
         }
     } catch (e) {
-        res.json('notexist');
+        res.status(500).json({ error:'notexist'});
     }
 });
 
