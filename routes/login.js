@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const collection = require('../Database/user'); // Adjust the path as needed
+const collection = require('../Database/user');
 
 router.post('/', async (req, res) => {
     const { username, password } = req.body;
